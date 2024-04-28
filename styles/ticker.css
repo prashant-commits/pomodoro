@@ -1,0 +1,44 @@
+.ticker {
+    position: relative;
+}
+
+
+.ticker-slider {
+    position: absolute;
+    inset-inline: 0;
+    transform: translateY(0.5em);
+    opacity: 0;
+}
+
+.ticker-item-animation.ticker-slider {
+    animation: slide-in 0.2s;
+}
+
+.ticker-item-animation.ticker-main {
+    animation: slide-out 0.2s;
+}
+
+@keyframes slide-in {
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    0% {
+        transform: translateY(0.5em);
+        opacity: 0;
+
+    }
+}
+
+@keyframes slide-out {
+    100% {
+        transform: translateY(-1em);
+        opacity: 0;
+    }
+
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

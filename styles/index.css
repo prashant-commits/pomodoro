@@ -1,0 +1,458 @@
+:root {
+    --bg-color: #1E213F;
+    --bg-dark-color: #161932;
+    --orange-color: #F87070;
+    --teal-color: #70F3F8;
+    --lavender-color: #D881F8;
+    --input-bg-color: #EFF1FA;
+    --text-color: #D7E0FF;
+    --text-dark-color: #1E213F;
+    --kumbh-sans: 'Kumbh Sans', sans-serif;
+    --roboto-slab: 'Roboto Slab', serif;
+    --space-mono: 'Space Mono', monospace;
+    --primary-color: var(--lavender-color);
+    --font-family: var(--space-mono);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 4px;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+main {
+    height: 100svh;
+    padding-top: 12rem;
+    padding-bottom: 14rem;
+    text-align: center;
+}
+
+.heading {
+    font-family: var(--kumbh-sans);
+    font-size: 8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 14rem;
+}
+
+.tab-container {
+    text-align: center;
+}
+
+.tabs {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 9999rem;
+    margin-bottom: 11rem;
+    background-color: var(--bg-dark-color);
+    margin-inline: auto;
+    z-index: 10;
+}
+
+.tabs label {
+    height: 12rem;
+    min-width: 30rem;
+    border-radius: 9999rem;
+    font-size: 3.5rem;
+    font-weight: bold;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tabs label span {
+    opacity: 0.4;
+    transition: opacity 0.3s;
+}
+
+.tabs label:has(input:checked) {
+    background-color: var(--primary-color);
+    color: var(--text-dark-color);
+}
+
+.tabs label:has(input:checked) span {
+    opacity: 1;
+}
+
+.countdown {
+    display: grid;
+    position: relative;
+    height: 102.5rem;
+    width: 102.5rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    isolation: isolate;
+    margin-inline: auto;
+
+
+    --bg-light-countdown-color: #2E325A;
+    --bg-dark-countdown-color: #0E112A;
+    --box-shadow-light-countdown-color: #272C5A;
+    --box-shadow-dark-countdown-color: #121530;
+    --circumference: 289.02652413;
+    --circumference-offset: 145;
+}
+
+.countdown .outer-circle {
+    position: absolute;
+    grid-area: 1/1/-1/-1;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-image: linear-gradient(-45deg, var(--bg-light-countdown-color) 0%, var(--bg-dark-countdown-color) 100%);
+    box-shadow: -12.5rem -12.5rem 100px 0 var(--box-shadow-light-countdown-color), 12.5rem 12.5rem 100px 0 var(--box-shadow-dark-countdown-color);
+}
+
+.countdown .inner-circle {
+    position: absolute;
+    grid-area: 1/1/-1/-1;
+    place-self: center;
+    height: calc(100% - 6rem);
+    width: calc(100% - 6rem);
+    border-radius: 50%;
+    background-color: var(--bg-dark-color);
+}
+
+.countdown .progress-circle {
+    position: absolute;
+    grid-area: 1/1/-1/-1;
+    place-self: center;
+    height: calc(100% - 12rem);
+    width: calc(100% - 12rem);
+    border-radius: 50%;
+    background-color: var(--bg-dark-color);
+}
+
+.countdown .progress-circle circle {
+    stroke: var(--primary-color);
+    stroke-width: 1rem;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: var(--circumference);
+    stroke-dashoffset: var(--circumference-offset);
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+    transition: stroke-dashoffset 0.1s ease;
+}
+
+.countdown .time-display {
+    place-self: center;
+    font-size: 20rem;
+    z-index: 20;
+    letter-spacing: -5px;
+    display: flex;
+}
+
+.countdown .control-btn {
+    all: unset;
+    display: inline-flex;
+    position: absolute;
+    grid-area: 1/1/-1/-1;
+    inset-inline: 0;
+    justify-self: center;
+    margin-inline: auto;
+    bottom: 25rem;
+    font-size: 4rem;
+    font-weight: bold;
+    letter-spacing: 4rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.countdown .control-btn:hover {
+    color: var(--primary-color);
+}
+
+.settings-btn {
+    all: unset;
+    height: 7rem;
+    width: 7rem;
+    color: var(--text-color);
+    margin-inline: auto;
+    margin-top: 16rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.settings-btn:hover {
+    color: var(--primary-color);
+}
+
+
+.settings-modal {
+    border-radius: 6rem;
+    max-width: 135rem;
+    min-width: 100rem;
+    background-color: white;
+    margin: auto;
+    color: var(--bg-dark-color);
+    text-align: start;
+}
+
+.settings-modal::backdrop {
+    background-color: rgb(0, 0, 0, 0.5);
+}
+
+.settings-modal[open] {
+    animation: modal-open 0.2s forwards;
+}
+
+.settings-modal.animate-close::backdrop {
+    animation: modal-backdrop-close 0.2s forwards;
+}
+
+.settings-modal.animate-close {
+    animation: modal-close 0.2s forwards;
+}
+
+@keyframes modal-backdrop-close {
+    to {
+        background-color: rgb(0, 0, 0, 0);
+    }
+}
+
+@keyframes modal-open {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes modal-close {
+    from {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+}
+
+.settings-modal .modal-header {
+    padding-inline: 10rem;
+    padding-block: 4rem;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+    font-size: 7rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.settings-modal .modal-header .modal-close-btn {
+    all: unset;
+    height: 6rem;
+    width: 6rem;
+    cursor: pointer;
+    transition: color 0.3s;
+    display: grid;
+    place-items: center;
+}
+
+.settings-modal .modal-body {
+    padding: 4rem 10rem 2rem;
+}
+
+.settings-modal .modal-footer {
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    padding: 2rem;
+    border-top: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+.apply-settings-btn {
+    all: unset;
+    height: 14rem;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    border-radius: 4rem;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-form .form-item:not(:last-child) {
+    border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+.settings-form .form-item {
+    padding-block: 5rem;
+}
+
+.settings-form .form-item .form-label {
+    font-size: 3.25rem;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.settings-form .form-item-duration {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5rem;
+}
+
+.settings-form .form-item-duration .form-label {
+    grid-column: 1/-1;
+}
+
+.duration {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 2rem;
+}
+
+.duration span {
+    font-size: 3rem;
+    color: var(--bg-color);
+    opacity: 0.4;
+    font-weight: bold;
+}
+
+.duration input {
+    align-self: stretch;
+    background-color: var(--input-bg-color);
+    border: none;
+    border-radius: 2.5rem;
+    padding: 4rem;
+    min-width: 35rem;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--bg-color);
+}
+
+.settings-form .form-item-font {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fonts-group {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.fonts-group > * {
+    cursor: pointer;
+    font-size: 4rem;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    color: var(--bg-color);
+    line-height: 10rem;
+    background-color: var(--input-bg-color);
+    text-align: center;
+    vertical-align: baseline;
+    font-weight: bold;
+    outline: 2px solid var(--input-bg-color);
+    outline-offset: -2px;
+    transition: color 0.3s, outline-offset 0.3s, background-color 0.3s, outline-color 0.3s;
+}
+
+.fonts-group > *:hover {
+    outline-offset: 4px;
+}
+
+.fonts-group > *:active {
+    outline-offset: 6px;
+}
+
+.fonts-group > *:has(input:checked) {
+    outline-color: transparent;
+    color: white;
+    background-color: var(--bg-dark-color);
+}
+
+
+.settings-form .form-item-color {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.colors-group {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.colors-group > * {
+    cursor: pointer;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    line-height: 10rem;
+    text-align: center;
+    vertical-align: baseline;
+    font-weight: bold;
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+    transition: color 0.3s, outline-offset 0.3s, background-color 0.3s, outline-color 0.3s;
+}
+
+.colors-group > *:hover {
+    outline-offset: 4px;
+    outline-color: var(--input-bg-color);
+}
+
+.colors-group > *:active {
+    outline-offset: 6px;
+    outline-color: var(--input-bg-color);
+}
+
+.colors-group > *:has(input:checked) {
+    outline-color: transparent;
+}
+
+.colors-group > *:has(input:checked)::after {
+    content: "";
+    border-left: 2px solid var(--bg-dark-color);
+    border-bottom: 2px solid var(--bg-dark-color);
+    transform: rotate(-45deg);
+    display: inline-block;
+    height: 1.5rem;
+    width: 3rem;
+}
+
+.splash-screen {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    height: 100svh;
+    transition: transform 1s 1s;
+    background-color: var(--bg-dark-color);
+    z-index: 1000;
+}

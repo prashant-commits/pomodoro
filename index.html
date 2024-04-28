@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&family=Roboto+Slab:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./styles/ticker.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <script src="./scripts/index.js" type="module"></script>
+</head>
+
+<body>
+    <main>
+        <h2 class="heading">pomodoro</h2>
+        <div class="tab-container">
+            <div class="tabs">
+                <label>
+                    <input hidden type="radio" name="tab" value="pomodoroTime" id="pomodoro" checked>
+                    <span>pomodoro</span>
+                </label>
+                <label>
+                    <input hidden type="radio" name="tab" value="shortBreakTime" id="short-break">
+                    <span>short break</span>
+                </label>
+                <label>
+                    <input hidden type="radio" name="tab" value="longBreakTime" id="long-break">
+                    <span>long break</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="countdown">
+            <div class="outer-circle">
+
+            </div>
+            <div class="inner-circle"></div>
+            <svg class="progress-circle" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="46" fill="none" />
+            </svg>
+
+            <div class="time-display">
+                <span class="minutes1"></span>
+                <span class="minutes2"></span>
+                <span>:</span>
+                <span class="seconds1"></span>
+                <span class="seconds2">
+                </span>
+            </div>
+            <button class="control-btn">START</button>
+        </div>
+
+        <button class="settings-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <rect width="256" height="256" fill="none" />
+                <path fill="currentColor"
+                    d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z" />
+            </svg>
+        </button>
+
+        <dialog class="settings-modal">
+            <form class="settings-form" method="dialog">
+
+                <div class="modal-header">
+                    <span>Settings</span>
+                    <button class="modal-close-btn" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                            <rect width="256" height="256" fill="none" />
+                            <line x1="200" y1="56" x2="56" y2="200" fill="none" stroke="currentColor"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="24" />
+                            <line x1="200" y1="200" x2="56" y2="56" fill="none" stroke="currentColor"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="24" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-item form-item-duration">
+                        <label class="form-label">TIME (MINUTES)</label>
+
+                        <label class="pomodoro-duration duration">
+                            <span>pomodora</span>
+                            <input name="pomodoroTime" type="number" min="1" max="99" />
+                        </label>
+                        <label class="short-break-duration duration">
+                            <span>short break</span>
+                            <input name="shortBreakTime" type="number" min="1" max="99" />
+                        </label>
+                        <label class="long-break-duration duration">
+                            <span>long break</span>
+                            <input name="longBreakTime" type="number" min="1" max="99" />
+                        </label>
+                    </div>
+                    <div class="form-item form-item-font">
+                        <label class="form-label">FONT</label>
+                        <div class="fonts-group">
+                            <label class="kumbh" style="font-family: var(--kumbh-sans);">
+                                Aa
+                                <input type="radio" hidden name="font" value="--kumbh-sans" />
+                            </label>
+                            <label class="roboto" style="font-family: var(--roboto-slab);">
+                                Aa
+                                <input type="radio" hidden name="font" value="--roboto-slab" />
+                            </label>
+                            <label class="space" style="font-family: var(--space-mono);">
+                                Aa
+                                <input type="radio" hidden name="font" value="--space-mono" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-item form-item-color">
+                        <label class="form-label">COLOR</label>
+                        <div class="colors-group">
+                            <label class="orange" style="background-color: var(--orange-color);">
+                                <input type="radio" hidden name="color" value="--orange-color" />
+                            </label>
+                            <label class="teal" style="background-color: var(--teal-color);">
+                                <input type="radio" hidden name="color" value="--teal-color" />
+                            </label>
+                            <label class="lavender" style="background-color: var(--lavender-color);">
+                                <input type="radio" hidden name="color" value="--lavender-color" />
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="apply-settings-btn" type="submit">
+                        Apply
+                    </button>
+                </div>
+            </form>
+
+        </dialog>
+
+    </main>
+
+    <section class="splash-screen">
+        <h2 class="heading">pomodoro</h2>
+
+    </section>
+
+</body>
+
+</html>
